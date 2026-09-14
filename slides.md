@@ -23,13 +23,19 @@ mdc: true
 author: Alvaro Mena Monge
 hideInToc: true
 style: './uno.css'
+themeConfig:
+  primary: '#005A9C'
 ---
 
+<br> <br>
+<div style="font-size: 30px;">
+  ORMs, JPA y Hibernate
+</div>
+ <br>
 
 
-# ORMs, JPA y Hibernate
 
-Desarrollo de software 4
+IF0009 Desarrollo de software 4
 <br>
 MSI. Álvaro Mena Monge
 

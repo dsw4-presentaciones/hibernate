@@ -1,6 +1,6 @@
 ---  
 layout: full
-class: bg-amber-800 text-white flex flex-col items-center justify-center
+class: bg-[#858778] text-white flex flex-col items-center justify-center
 bibFile: references.bib
 ---
 
@@ -8,15 +8,17 @@ bibFile: references.bib
 
 
 ---
+layout: two-cols
+---
 
 ## 🧩 ¿Qué es una relación One-to-One?
 
-Un registro en la tabla **A** está asociado **exactamente con un** registro en la tabla **B**, y viceversa.
-
+Un registro en la tabla **A** está asociado **exactamente con un** registro en la tabla **B**, y viceversa. 
 - **Ejemplo del dominio:** 
   - Un `Instructor` tiene un único detalle profesional (`InstructorDetail`).
   - El detalle pertenece exclusivamente a ese instructor.
 
+::right::
 ```mermaid
 erDiagram 
     INSTRUCTOR ||--|| INSTRUCTOR_DETAIL : has
@@ -26,6 +28,7 @@ erDiagram
         string first_name
         string last_name
         string email
+        int instructor_detail_id FK
     }
 
     INSTRUCTOR_DETAIL {
