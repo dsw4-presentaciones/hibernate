@@ -3,7 +3,10 @@
 theme: seriph
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: ./assets/img/portada.jpg
+#background: /PORTADA.jpeg
+layout: image
+image: /portada.jpeg
+backgroundSize: contain
 # some information about your slides (markdown enabled)
 title: Hibernate
 info: |
@@ -26,7 +29,7 @@ style: './uno.css'
 
 # ORMs, JPA y Hibernate
 
-IF4101 Lenguajes para aplicaciones comerciales
+Desarrollo de software 4
 <br>
 MSI. Álvaro Mena Monge
 
