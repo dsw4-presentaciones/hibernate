@@ -87,3 +87,11 @@ src: ./pages/clase3_jpa_one_to_one_uni_crud.md
 hide: false
 ---
 
+---
+src: ./pages/clase4_jpa_one_to_many.md
+hide: false
+---
+---
+src: ./pages/clase5_jpa_many_to_many.md
+hide: false
+---
