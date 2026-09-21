@@ -26,10 +26,11 @@ CREATE TABLE `instructor` (
   `last_name` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `instructor_detail_id` int DEFAULT NULL,
+  `hire_date` date DEFAULT NULL,
+  `active` tinyint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_DETAIL_idx` (`instructor_detail_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-
 
 CREATE TABLE `course` (
   `id` int NOT NULL AUTO_INCREMENT,

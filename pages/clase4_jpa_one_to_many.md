@@ -1,7 +1,6 @@
 ---  
 layout: full
 class: bg-[#858778] text-white flex flex-col items-center justify-center
-bibFile: references.bib
 hideInToc: false
 ---
 
@@ -9,7 +8,7 @@ hideInToc: false
 
 ---
 layout: two-cols
-
+hideInToc: true
 ---
 
 # 🧩 ¿Qué es una relación One-to-Many?
@@ -51,7 +50,7 @@ hideInToc: true
 ---
 # Creación de la entidad dependendiente Course
 
-El lado propietario (owning side) de la relación a nivel de base de datos, configurado con @ManyToOne
+El lado propietario (owning side) de la relación a nivel de base de datos, configurado con \@ManyToOne
 
 <div style="max-height: 400px; overflow-y: auto;">
 

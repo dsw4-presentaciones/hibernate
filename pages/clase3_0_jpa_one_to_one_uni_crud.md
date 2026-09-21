@@ -1,7 +1,6 @@
 ---  
 layout: full
 class: bg-[#858778] text-white flex flex-col items-center justify-center
-bibFile: references.bib
 ---
 
 # Mapeos avanzados en Hibernate: One-to-One unidireccional
@@ -114,7 +113,7 @@ hideInToc: true
 ---
 # Creación de la entidad principal Instructor
 
-En esta clase se configura la anotación clave @OneToOne junto con la llave foránea mediante @JoinColumn
+En esta clase se configura la anotación clave \@OneToOne junto con la llave foránea mediante \@JoinColumn
 <div style="max-height: 400px; overflow-y: auto;">
 
 ```java
@@ -217,11 +216,11 @@ hideInToc: true
 ---
 # Aspectos fundamentales
 
-* @OneToOne: Le indica a Hibernate que existe una relación de uno a uno entre las dos entidades.
+* \@OneToOne: Le indica a Hibernate que existe una relación de uno a uno entre las dos entidades.
 
 * cascade = CascadeType.ALL: ¡Cuidado! Propaga todas las operaciones de persistencia (PERSIST, MERGE, REMOVE, REFRESH) desde el Instructor hacia su InstructorDetail asociado automáticamente.
 
-* @JoinColumn(name = "..."): Define la columna física en la base de datos que actuará como Foreign Key (FK) apuntando a la tabla relacionada.
+* \@JoinColumn(name = "..."): Define la columna física en la base de datos que actuará como Foreign Key (FK) apuntando a la tabla relacionada.
 
 ---
 layout: default
@@ -316,7 +315,8 @@ hideInToc: true
 
 <div style="max-height: 400px; overflow-y: auto;">
 
-```java
+``` java
+
 package edu.academy.coursemng.controller.rest;
 
 import java.util.List;
@@ -364,6 +364,7 @@ public class InstructorRestController {
     }
 }
 ```
+
 </div>
 
 ---
@@ -403,3 +404,62 @@ Accept: application/json
 }
 ```
 </div>
+
+---
+layout: default
+hideInToc: true
+---
+# Prueba unitaria de InstructorRepositoryTest
+
+<div style="max-height: 400px; overflow-y: auto;">
+
+```java
+package edu.academy.coursemng.repository;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import edu.academy.coursemng.entity.Instructor;
+import edu.academy.coursemng.entity.InstructorDetail;
+
+@SpringBootTest
+public class InstructorRepositoryTest {
+
+    @Autowired
+    private InstructorRepository instructorRepository;
+
+    @ParameterizedTest
+    @CsvSource(delimiter = ';', value = {
+        "Ana; García; ana@example.com; https://youtube.com/ana; reading",
+        "Luis; Martínez; luis@example.com; https://youtube.com/luis; swimming",
+        "María; López; maria@example.com; https://youtube.com/maria; dancing"
+    })
+    void saveAndFindInstructor(String firstName, String lastName, String email, 
+        String youtubeChannel, String hobby) {
+        // Arrange
+        Instructor instructor = 
+        new Instructor(firstName, lastName, email);
+        InstructorDetail detail = 
+        new InstructorDetail(youtubeChannel, hobby);
+        instructor.setInstructorDetail(detail);
+        // Act
+        Instructor savedInstructor = instructorRepository.save(instructor);
+        // Assert
+        // las aserciones agrupadas permiten verificar múltiples condiciones en un solo bloque, 
+        // lo que facilita la lectura y el mantenimiento del código de prueba.
+        assertAll("Verificaciones de inserción de un Instructor", 
+            () -> assertThat(savedInstructor.getId()).isGreaterThan(0),
+            () -> assertThat(instructorRepository.findById(savedInstructor.getId())).isPresent(),
+            () -> assertThat(instructorRepository.findById(savedInstructor.getId()).get().getFirstName()).
+              isEqualTo(firstName)
+        );
+    }
+}
+
+```
+</div>
+
