@@ -315,7 +315,7 @@ hideInToc: true
 
 <div style="max-height: 400px; overflow-y: auto;">
 
-``` java
+```java
 
 package edu.academy.coursemng.controller.rest;
 
