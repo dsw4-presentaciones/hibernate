@@ -105,7 +105,6 @@ hideInToc: true
 # Pruebas unitarias
 
 - Implemente el código para pruebas unitarias para estos métodos
-
 - Verifique si el detalle del instructor se carga cuando se llaman estos métodos. Use el depurador de VSC.
 
 ---
@@ -169,7 +168,7 @@ Instructor findFirstByOrderByFirstNameAsc();
 Instructor findTopByOrderByHireDateDesc();
 ```
 
-### Interpretación
+## Interpretación
 
 - Retorna el instructor con el nombre más pequeño alfabéticamente.
 - Retorna el instructor contratado más recientemente.
