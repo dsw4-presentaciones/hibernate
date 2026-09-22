@@ -6,7 +6,8 @@ hideInToc: false
 highlighter: shiki
 ---
 
-# Mapeos avanzados en Hibernate: Many-to-Many bidireccional
+# Mapeos avanzados en Hibernate
+## Many-to-Many bidireccional
 
 ---
 layout: two-cols
@@ -57,10 +58,11 @@ erDiagram
     }
 ```
 
---
+---
 layout: default
 hideInToc: true
 ---
+
 # Creación de la entidad propietaria Course
 
 La entidad Course define el lado principal de la relación y la configuración de la tabla intermedia.
@@ -110,7 +112,6 @@ public class Course {
     }
 }
 ```
-
 </div>
 
 
@@ -125,7 +126,7 @@ La entidad Student mapea la relación inversa utilizando el atributo mappedBy.
 
 <div style="max-height: 400px; overflow-y: auto;">
 
-```java {|25-30|} 
+```java
 package edu.academy.coursemng.entity;
 
 import java.util.ArrayList;

@@ -88,7 +88,7 @@ hide: false
 ---
 
 ---
-src: ./pages/clase3_1_jpa_métodos_consulta.md
+src: ./pages/clase3_1_jpa_metodos_consulta.md
 hide: false
 ---
 
@@ -101,4 +101,14 @@ src: ./pages/clase5_jpa_many_to_many.md
 hide: false
 ---
 
+---
+layout: default
+hide: false
+---
+
+# Referencias
+
+in28minutes. (2026). Master JPA and Hibernate with Spring Boot [Computer software]. GitHub. https://github.com/in28minutes/jpa-with-hibernate
+
+Tudose, C., & Marand, F. (2022). Java Persistence with Spring Data and Hibernate. Manning Publications.
 

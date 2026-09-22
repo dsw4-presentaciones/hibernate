@@ -4,7 +4,8 @@ class: bg-[#858778] text-white flex flex-col items-center justify-center
 hideInToc: false
 ---
 
-# Mapeos avanzados en Hibernate: One-to-Many bidireccional
+# Mapeos avanzados en Hibernate
+## One-to-Many bidireccional
 
 ---
 layout: two-cols

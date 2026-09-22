@@ -3,7 +3,8 @@ layout: full
 class: bg-[#858778] text-white flex flex-col items-center justify-center
 ---
 
-# Mapeos avanzados en Hibernate: One-to-One unidireccional
+# Mapeos avanzados en Hibernate
+## One-to-One unidireccional
 
 
 ---

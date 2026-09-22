@@ -3,14 +3,16 @@ layout: full
 class: bg-[#858778] text-white flex flex-col items-center justify-center
 ---
 
-# Definición de métodos de consulta con Spring Data JPA
+# Definición de métodos de consulta
+## con Spring Data JPA
+
 ---
 layout: two-cols
 hideInToc: true
 ---
 
 # Capacidades de JpaRepository
- 
+
 - **CrudRepository**
 ```text
 findAll(), saveAll(), deleteAll(), flush()
@@ -19,7 +21,7 @@ findAll(), saveAll(), deleteAll(), flush()
 - **PagingAndSortingRepository**
     - Paginación.
     - Ordenamiento.
- 
+
 - **JpaRepository**
     - Sobreescribe los métodos de CrudRepository y retorna una List.
     - Operaciones por lotes.
@@ -34,14 +36,16 @@ graph BT
 JPA[JpaRepository]
 PAGE[PagingAndSortingRepository]
 CRUD[CrudRepository]
- 
+
 JPA --> PAGE
 PAGE --> CRUD
 ```
+
 ---
 layout: default
 hideInToc: true
 ---
+
 # Incluya los siguientes atributos en la entidad Instructor y en la respectiva tabla
 - hireDate, active
 
@@ -82,6 +86,7 @@ public class Instructor {
 layout: default
 hideInToc: true
 ---
+
 # Agregue los siguientes métodos en InstructorRepository
 
 | Signatura del método | Equivalencia en SQL |
@@ -92,12 +97,24 @@ hideInToc: true
 | `List<Instructor> findByActiveOrderByFirstNameDesc(int active);` | `ORDER BY first_name DESC` |
 | `List<Instructor> findByHireDateIn(Collection<LocalDate> dates);` | `WHERE hire_date IN (?, ?, ...)` |
 
+---
+layout: default
+hideInToc: true
+---
+
+# Pruebas unitarias
+
+- Implemente el código para pruebas unitarias para estos métodos
+
+- Verifique si el detalle del instructor se carga cuando se llaman estos métodos. Use el depurador de VSC.
 
 ---
 layout: default
 hideInToc: true
 ---
+
 # Otras capacidades para consultas
+
 - Operadores de comparación
     - LessThan
     - LessThanEqual
@@ -122,7 +139,9 @@ class: bg-[#858778] text-white flex flex-col items-center justify-center
 ## Spring Data JPA
 
 ---
+layout: default
 hideInToc: true
+---
 
 # ¿Por qué limitar resultados?
 
@@ -134,6 +153,10 @@ En aplicaciones reales no siempre se deben recuperar todos los registros.
 - Obtener los primeros resultados de una búsqueda.
 - Mostrar resultados por páginas.
 - Evitar cargar grandes volúmenes de datos en memoria.
+
+---
+layout: default
+hideInToc: true
 ---
 
 # Limitar Resultados con First y Top
@@ -152,7 +175,9 @@ Instructor findTopByOrderByHireDateDesc();
 - Retorna el instructor contratado más recientemente.
 
 ---
+layout: default
 hideInToc: true
+---
 
 # Obtener los N primeros registros
 
@@ -180,7 +205,9 @@ Resultado:
 - Ordenados por fecha de contratación.
 
 ---
+layout: default
 hideInToc: true
+---
 
 # Ordenamiento (Sorting)
 
@@ -204,6 +231,9 @@ instructorRepository.findByActive(
 ```
 
 ---
+layout: default
+hideInToc: true
+---
 
 # Paginación
 
@@ -224,7 +254,9 @@ PageRequest.of(
 ```
 
 ---
+layout: default
 hideInToc: true
+---
 
 # Solicitando una Página
 
@@ -251,7 +283,9 @@ Recordar: La numeración comienza en 0.
 | 2 | 7-9 |
 
 ---
+layout: default
 hideInToc: true
+---
 
 # Paginación con ordenamiento
 
