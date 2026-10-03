@@ -3,8 +3,7 @@ layout: full
 class: bg-[#858778] text-white flex flex-col items-center justify-center
 ---
 
-# Mapeos avanzados en Hibernate
-## One-to-One unidireccional
+# Mapeo One-to-One unidireccional
 
 
 ---
@@ -151,10 +150,10 @@ public class Instructor {
     @Column(name="email")
     private String email;
 
-    // ** set up mapping to InstructorDetail entity
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "instructor_detail_id")
-    private InstructorDetail instructorDetail;
+    // OneToOne un instructor tiene un detalle (cardinalidad)
+    @OneToOne(cascade = CascadeType.ALL) // las operaciones se propagarán
+    @JoinColumn(name = "instructor_detail_id") // le indica a JPA que la tabla instructor tiene una llave foránea
+    private InstructorDetail instructorDetail; // por defecto es FetchType.LAZY
 
     public Instructor() {
 

@@ -6,8 +6,7 @@ hideInToc: false
 highlighter: shiki
 ---
 
-# Mapeos avanzados en Hibernate
-## Many-to-Many bidireccional
+# Mapeo Many-to-Many bidireccional
 
 ---
 layout: two-cols
@@ -92,9 +91,12 @@ public class Course {
     @JoinColumn(name="instructor_id")
     private Instructor instructor;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+    // cardinalidad un curso se relaciona con muchos estudiantes y un estudiante con muchos cursos
+    @ManyToMany(fetch = FetchType.LAZY, //LAZY carga perezosa
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, //valorar quitar PERSIST y DETACH
             CascadeType.DETACH, CascadeType.REFRESH})
+            // Configura la tabla intermedia (pivote) que se crea en la base de datos 
+           // para gestionar esta relación de muchos a muchos
     @JoinTable(
             name = "course_student",
             joinColumns = @JoinColumn(name = "course_id"),
@@ -161,9 +163,10 @@ public class Student {
     private String email;
 
     @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, // VALORAR QUITAR PERSIST Y MERGE
                     CascadeType.DETACH, CascadeType.REFRESH},
-            mappedBy = "students")
+            mappedBy = "students") // Le indica a Hibernate que Student no controla la tabla intermedia, 
+                                  // sino Course (Owning Side)
     private List<Course> courses;
 
     public Student() {

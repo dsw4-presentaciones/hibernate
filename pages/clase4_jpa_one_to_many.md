@@ -4,8 +4,7 @@ class: bg-[#858778] text-white flex flex-col items-center justify-center
 hideInToc: false
 ---
 
-# Mapeos avanzados en Hibernate
-## One-to-Many bidireccional
+# Mapeo One-to-Many bidireccional
 
 ---
 layout: two-cols
@@ -72,10 +71,12 @@ public class Course {
 
     @Column(name="title")
     private String title;
-
+    // PERSIST al guardarse un curso por primera vez, también guarda el instructor si no existiera en b.d.
+    // MERGE al actualizar los datos de un curso existente también actualiza instructor
+    // DETACH cuando se quita el curso del contexto de persistencia, también el instructor
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, 
                           CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name="instructor_id")
+    @JoinColumn(name="instructor_id") // Le indica a JPA que la tabla course tendrá una clave foránea
     private Instructor instructor;
 
     public Course() {
@@ -134,12 +135,14 @@ import java.util.List;
 public class Instructor {
     // ... campos de id, first_name, last_name, email, instructorDetail
 
-    @OneToMany(mappedBy = "instructor", 
+    @OneToMany(mappedBy = "instructor", // mappedBy: el instructor no es dueño de la llave foránea
+                                        // el dueño es el campo instructor en la clase Course
                cascade = {CascadeType.PERSIST, CascadeType.MERGE,
                           CascadeType.DETACH, CascadeType.REFRESH})
     private List<Course> courses;
 
     // Método helper vital para sincronizar ambos lados de la relación
+    // la lista del instructor se llena y se le asigna el instructor
     public void add(Course course) {
         if (courses == null) {
             courses = new ArrayList<>();
